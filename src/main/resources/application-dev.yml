@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/club_manager?characterEncoding=utf-8&useSSL=false
+        username: root
+        password: yunzhi
+        hikari:
+            connection-test-query: SELECT 1
+            connection-timeout: 60000
+            idle-timeout: 500000
+            max-lifetime: 540000
+            maximum-pool-size: 12
+            minimum-idle: 10
+            pool-name: SPHHikariPool
+tecent:
+    cos:
+        accessKey:
+        secretKey:
+        bucketName:
+        regionName:

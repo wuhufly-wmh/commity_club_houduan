@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.manager.modules.club.dao.ClubBudgetDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.manager.modules.club.entity.ClubBudgetEntity" id="clubBudgetMap">
+        <result property="id" column="id"/>
+        <result property="clubId" column="club_id"/>
+        <result property="clubName" column="club_name"/>
+        <result property="price" column="price"/>
+        <result property="createTime" column="create_time"/>
+        <result property="application" column="application"/>
+        <result property="status" column="status"/>
+    </resultMap>
+    <select id="select" resultType="com.manager.modules.club.entity.ClubBudgetEntity">
+        select ca.*
+        from club_budget ca
+                 left join club_info ci on ca.club_id = ci.id
+        where ci.owner_id = #{id}
+    </select>
+    <select id="page" resultType="com.manager.modules.club.entity.ClubBudgetEntity">
+        select cb.*
+        from club_budget cb
+                 left join club_info ci on cb.club_id = ci.id
+        where ci.academy_id = #{acId}
+        <if test="clubName != null and clubName != ''">
+            cb.clubName like concat('%', concat(#{clubName}, '%'))
+        </if>
+    </select>
+
+
+</mapper>
