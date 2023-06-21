@@ -4,6 +4,7 @@ spring:
         password: TMDnbnbswdkl123!
         url: jdbc:mysql://81.68.64.121:4000/club_manage?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
         driver-class-name: com.mysql.jdbc.Driver
+
         hikari:
             connection-test-query: SELECT 1
             connection-timeout: 60000
